@@ -1,7 +1,8 @@
-# Digit Recognition System
+# Digit Classification System
 This project is a machine learning application designed to recognize handwritten digits using Convolutional Neural 
 Networks (CNN). It includes tools for data preprocessing, model training, and an interactive drawing interface for real-time predictions.
 
+👉 [Live Demo](https://huggingface.co/spaces/Arcus72/Image-Digit-Classification)
 
 ## Files
 - **app.py**: The main application file that creates a Gradio interface for the digit recognition system.
