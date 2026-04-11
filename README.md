@@ -24,11 +24,18 @@ Networks (CNN). It includes tools for data preprocessing, model training, and an
 - **Interactive Demo**: A Gradio interface that allows users to draw digits and get instant predictions from the trained model.
 
 ## Tech Stack
-- **Core**: Python, TensorFlow/Keras
+- **Core**: Python, Pytorch. (TensorFlow/Keras version on main branch)
+- **Deep Learning Frameworks**:
+  - **PyTorch version** - pytorch-version branch 
+  - **TensorFlow/Keras** - main branch (this branch)
 - **Tuning**: Keras Tuner
 - **Data Science**: Pandas, NumPy, Scikit-learn
 - **Visualization**: Matplotlib, Tkinter, Pillow (PIL)
 - **UI**: Gradio
 
+## Upcoming Changes:
+- **Improve demo** - The model currently struggles to identify certain handwritten digits in demo. Potential solution - Aligning demo input 
+  styles with training data for improved model's accuracy. (The pen used in demo is not the same as in data set).
+- 
 ## Results
 Based on the tuning process, the model typically achieves **>98%** accuracy on the test set.
