@@ -1,0 +1,14 @@
+.git
+.venv
+venv
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+*.pt
+*.onnx
+data/
+outputs/
+train_mnist.csv
+main_analysis.ipynb
+.gitignore

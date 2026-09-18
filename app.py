@@ -57,4 +57,4 @@ with gr.Blocks() as demo:
     ## GitHub Repository
     If you want to see the training process, data augmentation, and how the model was built, check out the **[main_analysis.ipynb](https://github.com/Arcus72/Image-Digit-Classification)** file in my GitHub repository.""")
 
-demo.launch(theme=gr.themes.Soft())
+demo.launch(server_name="0.0.0.0", server_port=7860, theme=gr.themes.Soft())
