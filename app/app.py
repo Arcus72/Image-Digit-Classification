@@ -4,7 +4,7 @@ import os
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 from tensorflow.keras.models import load_model
-model = load_model('saved_model.keras')
+model = load_model('./saved_model.keras')
 
 def predict_number(image):
 
@@ -21,12 +21,12 @@ with gr.Blocks() as demo:
     <center>
     <h1>Digit Classification</h1>
     </center>
-    
+
     ##  How to use:
     1. **Draw a single digit** (0-9) in the center of the black canvas.  Digit should be as large as possible.
     2. **Click 'Recognize'** to see the prediction and the model's confidence levels.
     3. **Click 'Clear canvas'** to clear the canvas.
-    
+
     """)
     with gr.Row():
         with gr.Column():

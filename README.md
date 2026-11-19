@@ -2,6 +2,7 @@
 
 This project is a machine learning application designed to recognize handwritten digits using Convolutional Neural
 Networks (CNN). It includes tools for data preprocessing, model training, and an interactive drawing interface for real-time predictions.
+Model training is done on an **Azure Machine Learning** compute cluster using Bayesian hyperparameter tuning.
 
 👉 [Live Demo](https://huggingface.co/spaces/Arcus72/Image-Digit-Classification)
 
@@ -60,4 +61,48 @@ Start in watch mode
 
 ```
 docker compose watch
+```
+
+## Training on Azure ML
+
+The `train_model/` directory contains scripts for training the CNN model on an **Azure Machine Learning** compute cluster. The workflow:
+
+1. Uploads `train_mnist.csv` to Azure Blob Storage (skipped if already registered).
+2. Builds and registers a Docker-based environment (TensorFlow + uv + Keras Tuner).
+3. Submits a command job to the cluster, which runs hyperparameter tuning via BayesianOptimization and saves the best model and confusion matrix to an output folder.
+
+After the job completes, use `download_model.py` to pull the trained `saved_model.keras` locally.
+
+### Configuration — `.env`
+
+Create a `.env` file inside `train_model/` based on `.env.example`:
+
+```env
+SUBSCRIPTION_ID="<your-azure-subscription-id>"
+RESOURCE_GROUP="<your-resource-group>"
+WORKSPACE_NAME="<your-aml-workspace-name>"
+COMPUTE_CLUSTER="<your-compute-cluster-name>"
+```
+
+The script loads this file automatically at runtime using `python-dotenv`.
+
+### How to run
+
+Install dependencies (requires Python 3.12+ and [`uv`](https://github.com/astral-sh/uv)):
+
+```bash
+cd train_model
+uv sync
+```
+
+Submit the training job to Azure ML:
+
+```bash
+uv run python train_model_azure.py
+```
+
+The script will print a **Studio URL** where you can monitor the job. Once it finishes, download the model by filling in the `JOB_NAME` in `download_model.py` and running:
+
+```bash
+uv run python download_model.py
 ```

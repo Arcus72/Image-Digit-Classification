@@ -1,21 +1,21 @@
 services:
   classificator:
-    build: .
+    build: ./app
     environment:
       - PYTHONUNBUFFERED=1
     ports:
-      - "7860:7860"
+      - '7860:7860'
     develop:
       watch:
-        - path: ./requirements.txt
+        - path: ./app/requirements.txt
           action: rebuild
-        - path: ./pyproject.toml
+        - path: ./app/pyproject.toml
           action: rebuild
         - path: ./app
           target: /app
           action: sync
           ignore:
             - __pycache__/
-            - "*.pyc"
+            - '*.pyc'
             - .venv/
             - .pytest_cache/
